@@ -1,8 +1,9 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+"""Server class to paginate a database of popular baby names.
+"""
 
 import csv
-import math
-from typing import List, Tuple, Dict
+from typing import List, Tuple
 
 
 class Server:
