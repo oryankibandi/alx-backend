@@ -6,6 +6,7 @@ from flask import Flask, render_template, request, g
 from flask_babel import Babel
 from pytz import timezone
 from pytz.exceptions import UnknownTimeZoneError
+import typing
 
 
 app = Flask(__name__)
@@ -50,7 +51,7 @@ def get_timezone():
     return 'UTC'
 
 
-def get_user(user_id=None):
+def get_user(user_id: str = None) -> typing.Dict | None:
     """Retrieves a user"""
     if user_id is None:
         return None
@@ -72,8 +73,10 @@ def before_request():
 @app.route('/', strict_slashes=False)
 def hello_holberton():
     """returns hello holberton"""
-    return render_template(
-        '7-index.html', home_title="Welcome to Holberton", home_header="Hello world", user=g.user)
+    return render_template('7-index.html',
+                           home_title="Welcome to Holberton",
+                           home_header="Hello world",
+                           user=g.user)
 
 
 if __name__ == '__main__':
